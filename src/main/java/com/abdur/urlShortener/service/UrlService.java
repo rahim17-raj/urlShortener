@@ -1,5 +1,6 @@
 package com.abdur.urlShortener.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
@@ -27,7 +28,7 @@ public class UrlService {
 		} while (urlRepository.findByShortUrl(shortUrl).isPresent());
 
 		// Calculate expiration date
-		LocalDateTime expirationDate = calculateExpirationDate(days);
+		LocalDate expirationDate = calculateExpirationDate(days);
 
 		// Save new URL record
 		Url url = new Url();
@@ -58,15 +59,15 @@ public class UrlService {
 		return shortUrl.toString();
 	}
 
-	private LocalDateTime calculateExpirationDate(Integer days) {
+	private LocalDate calculateExpirationDate(Integer days) {
 		if (days == null || days <= 0) {
-			// Default expiration time
-			return LocalDateTime.now().plusDays(7);
+			// Default expiration time 7 Days
+			return LocalDateTime.now().plusDays(7).toLocalDate();
 		}
-		return LocalDateTime.now().plusDays(days);
+		return LocalDateTime.now().plusDays(days).toLocalDate();
 	}
 
 	private boolean isExpired(Url url) {
-		return url.getExpirationDate().isBefore(LocalDateTime.now());
+		return url.getExpirationDate().isBefore(LocalDate.now());
 	}
 }
