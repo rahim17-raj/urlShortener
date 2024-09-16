@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Shortened URL</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<style>
+body {
+	background-color: #f8f9fa;
+	font-family: 'Arial', sans-serif;
+}
+
+.container {
+	max-width: 600px;
+	margin-top: 50px;
+}
+
+h1 {
+	color: #343a40;
+	margin-bottom: 20px;
+}
+
+.result-card {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	background-color: #ffffff;
+	background: linear-gradient(135deg, #e0f7fa, #b9fbc0);
+	color: #333;
+}
+
+.short-url {
+	font-size: 1.2rem;
+	word-break: break-all;
+	color: #007bff;
+}
+
+.btn-back {
+	margin-top: 20px;
+	background-color: #6c757d;
+	color: white;
+}
+
+.btn-back:hover {
+	background-color: #5a6268;
+}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<div class="result-card">
+			<h1 class="text-center">Shortened URL</h1>
+			<p class="text-center">Your shortened URL is:</p>
+			<p class="text-center short-url">
+				<a th:href="${shortUrl}" th:text="${shortUrl}" target="_blank"></a>
+			</p>
+			<div class="text-center">
+				<a href="/" class="btn btn-back btn-lg">Go Back</a>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
